@@ -1,5 +1,5 @@
-OPTIMIZER_NAME := "leftcurve/optimizer"
-OPTIMIZER_VERSION := "0.2.0"
+OPTIMIZER_NAME := "leftcurve/bob"
+OPTIMIZER_VERSION := "0.1.0"
 BOB_GIT_COMMIT := "main"
 BINARYEN_GIT_TAG := "version_123"
 
@@ -12,7 +12,7 @@ docker-build-amd64:
     --build-arg BINARYEN_GIT_TAG={{BINARYEN_GIT_TAG}} \
     --tag {{OPTIMIZER_NAME}}:{{OPTIMIZER_VERSION}} \
     --target optimizer \
-    docker/optimizer
+    .
 
 # Build the optimizer Docker image for the arm64 platform
 docker-build-arm64:
@@ -23,4 +23,4 @@ docker-build-arm64:
     --build-arg BINARYEN_GIT_TAG={{BINARYEN_GIT_TAG}} \
     --tag {{OPTIMIZER_NAME}}:{{OPTIMIZER_VERSION}}-arm64 \
     --target optimizer \
-    docker/optimizer
+    .
