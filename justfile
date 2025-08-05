@@ -21,6 +21,8 @@ docker-build-arm64:
     --platform linux/arm64 \
     --build-arg BOB_GIT_COMMIT={{BOB_GIT_COMMIT}} \
     --build-arg BINARYEN_GIT_TAG={{BINARYEN_GIT_TAG}} \
-    --tag {{OPTIMIZER_NAME}}:{{OPTIMIZER_VERSION}}-arm64 \
+    --tag {{OPTIMIZER_NAME}}-arm64:{{OPTIMIZER_VERSION}} \
     --target optimizer \
     .
+
+# TODO: build multi-platform image instead.
