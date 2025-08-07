@@ -1,6 +1,6 @@
 # ------------------------------------ bob -------------------------------------
 
-FROM rust:1.88.0-alpine AS bob
+FROM rust:1.86.0-alpine AS bob
 
 ARG BOB_GIT_COMMIT="main"
 
@@ -25,7 +25,7 @@ RUN rm -rf wasm-optimizer
 
 # ---------------------------------- wasm-opt ----------------------------------
 
-FROM rust:1.88.0-alpine AS wasm-opt
+FROM rust:1.86.0-alpine AS wasm-opt
 
 ARG BINARYEN_GIT_TAG="version_123"
 
@@ -50,7 +50,7 @@ RUN rm -rf binaryen
 
 # --------------------------------- optimizer ----------------------------------
 
-FROM rust:1.88.0-alpine AS optimizer
+FROM rust:1.86.0-alpine AS optimizer
 
 # Install build dependencies
 RUN apk update && apk add --no-cache musl-dev
