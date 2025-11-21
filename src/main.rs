@@ -149,6 +149,7 @@ fn main() {
             .arg(format!("{TARGET_DIR}/wasm32-unknown-unknown/release/{member}.wasm"))
             .arg("-o")
             .arg(format!("{ARTIFACTS_DIR}/{member}.wasm"))
+            .arg("--enable-bulk-memory") // starting Rust 1.87, the compiler generates bulk memory operators: https://github.com/rust-lang/rust/issues/141080
             .status()
             .unwrap();
         assert!(output.success());
