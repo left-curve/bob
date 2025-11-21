@@ -3,6 +3,10 @@ OPTIMIZER_VERSION := "0.2.0"
 BOB_GIT_COMMIT := "main"
 BINARYEN_GIT_TAG := "version_125"
 
+# List available recipes
+default:
+  @just --list
+
 # Run rustfmt
 fmt:
   cargo +nightly fmt --all
