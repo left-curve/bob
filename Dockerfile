@@ -27,7 +27,7 @@ RUN rm -rf bob
 
 FROM rust:1.91.0-alpine AS wasm-opt
 
-ARG BINARYEN_GIT_TAG="version_123"
+ARG BINARYEN_GIT_TAG="version_125"
 
 # Install build dependencies
 RUN apk update && apk add --no-cache build-base clang cmake git ninja python3
