@@ -3,6 +3,14 @@ OPTIMIZER_VERSION := "0.2.0"
 BOB_GIT_COMMIT := "main"
 BINARYEN_GIT_TAG := "version_125"
 
+# Run rustfmt
+fmt:
+  cargo +nightly fmt --all
+
+# Perform linting
+lint:
+  cargo clippy --bins --tests --benches --examples --all-features --all-targets -- -D warnings
+
 # Build the optimizer Docker image for the amd64 platform
 docker-build-amd64:
   docker buildx build \
