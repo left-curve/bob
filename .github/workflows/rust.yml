@@ -1,0 +1,56 @@
+name: Rust
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "main"
+    paths:
+      - "src/**"
+      - "./github/workflows/rust.yml"
+      - "Cargo.toml"
+      - "Cargo.lock"
+      - "rust-toolchain.toml"
+  pull_request:
+    branches:
+      - "*"
+    paths:
+      - "src/**"
+      - "./github/workflows/rust.yml"
+      - "Cargo.toml"
+      - "Cargo.lock"
+      - "rust-toolchain.toml"
+
+jobs:
+  format:
+    name: Format
+    runs-on: [self-hosted]
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+
+      - name: Install toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: nightly
+          components: rustfmt
+
+      - name: Run rustfmt checks
+        run: rustup run nightly cargo fmt --check --all
+
+  lint:
+    name: Lint
+    runs-on: [self-hosted]
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+
+      - name: Install toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.91
+          components: clippy
+
+      - name: Run clippy
+        if: env.BACKEND_CHANGED == 'true'
+        run: cargo clippy --bins --tests --benches --examples --all-features --all-targets -- -D warnings
