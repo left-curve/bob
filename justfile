@@ -1,7 +1,7 @@
 OPTIMIZER_NAME := "leftcurve/bob"
-OPTIMIZER_VERSION := "0.1.0"
+OPTIMIZER_VERSION := "0.2.0"
 BOB_GIT_COMMIT := "main"
-BINARYEN_GIT_TAG := "version_123"
+BINARYEN_GIT_TAG := "version_125"
 
 # Build the optimizer Docker image for the amd64 platform
 docker-build-amd64:
