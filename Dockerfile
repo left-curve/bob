@@ -17,7 +17,7 @@ RUN git clone https://github.com/left-curve/wasm-optimizer.git
 # Compile and install bob
 RUN cd wasm-optimizer \
   && git checkout $BOB_GIT_COMMIT \
-  && RUSTFLAGS='-C link-arg=-s' cargo build -p bob --release \
+  && RUSTFLAGS='-C link-arg=-s' cargo build -p bob --release --locked \
   && mv target/release/bob /usr/local/bin
 
 # Clean up
