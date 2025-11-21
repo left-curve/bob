@@ -12,16 +12,16 @@ ENV CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse
 RUN apk update && apk add --no-cache git musl-dev
 
 # Download source code
-RUN git clone https://github.com/left-curve/wasm-optimizer.git
+RUN git clone https://github.com/left-curve/bob.git
 
 # Compile and install bob
-RUN cd wasm-optimizer \
+RUN cd bob \
   && git checkout $BOB_GIT_COMMIT \
   && RUSTFLAGS='-C link-arg=-s' cargo build -p bob --release --locked \
   && mv target/release/bob /usr/local/bin
 
 # Clean up
-RUN rm -rf wasm-optimizer
+RUN rm -rf bob
 
 # ---------------------------------- wasm-opt ----------------------------------
 
