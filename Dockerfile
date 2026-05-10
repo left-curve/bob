@@ -1,6 +1,6 @@
 # ------------------------------------ bob -------------------------------------
 
-FROM rust:1.91.0-alpine AS bob
+FROM rust:1.95.0-alpine AS bob
 
 ARG BOB_GIT_COMMIT="main"
 
@@ -25,9 +25,9 @@ RUN rm -rf bob
 
 # ---------------------------------- wasm-opt ----------------------------------
 
-FROM rust:1.91.0-alpine AS wasm-opt
+FROM rust:1.95.0-alpine AS wasm-opt
 
-ARG BINARYEN_GIT_TAG="version_125"
+ARG BINARYEN_GIT_TAG="version_129"
 
 # Install build dependencies
 RUN apk update && apk add --no-cache build-base clang cmake git ninja python3
@@ -50,7 +50,7 @@ RUN rm -rf binaryen
 
 # --------------------------------- optimizer ----------------------------------
 
-FROM rust:1.91.0-alpine AS optimizer
+FROM rust:1.95.0-alpine AS optimizer
 
 # Install build dependencies
 RUN apk update && apk add --no-cache musl-dev

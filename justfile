@@ -1,7 +1,7 @@
 OPTIMIZER_NAME := "leftcurve/bob"
-OPTIMIZER_VERSION := "0.2.0"
+OPTIMIZER_VERSION := "0.3.0"
 BOB_GIT_COMMIT := "main"
-BINARYEN_GIT_TAG := "version_125"
+BINARYEN_GIT_TAG := "version_129"
 
 # List available recipes
 default:
